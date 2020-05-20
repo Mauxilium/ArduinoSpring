@@ -1,6 +1,6 @@
 package unit.business;
 
-import it.mauxilium.mauxarconnector.MauxArConnector;
+import it.mauxilium.arduinojavaserialrpc.ArduinoJavaSerialRpc;
 import it.mauxilium.springarduino.business.CardDiscover;
 import it.mauxilium.springarduino.business.DiscoverCardByPortAndBaudRateList;
 import it.mauxilium.springarduino.model.CardModel;
@@ -19,7 +19,7 @@ public class DiscoverCardByPortAndBaudRateListTest {
 
     @Test
     public void discoverOk() {
-        MauxArConnector mockedConnector = Mockito.mock(MauxArConnector.class);
+        ArduinoJavaSerialRpc mockedConnector = Mockito.mock(ArduinoJavaSerialRpc.class);
         Mockito.when(mockedConnector.getBaudRate()).thenReturn(1200, 1200);
         Mockito.when(mockedConnector.getPortName()).thenReturn("COM2");
 

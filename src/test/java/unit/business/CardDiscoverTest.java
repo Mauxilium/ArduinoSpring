@@ -1,8 +1,8 @@
 package unit.business;
 
-import it.mauxilium.mauxarconnector.MauxArConnector;
-import it.mauxilium.mauxarconnector.exception.MauxArConnectorActionFailsException;
-import it.mauxilium.mauxarconnector.exception.MauxArConnectorInitializationError;
+import it.mauxilium.arduinojavaserialrpc.ArduinoJavaSerialRpc;
+import it.mauxilium.arduinojavaserialrpc.exception.ArduinoRpcActionFailsException;
+import it.mauxilium.arduinojavaserialrpc.exception.ArduinoRpcInitializationError;
 import it.mauxilium.springarduino.business.CardDiscover;
 import it.mauxilium.springarduino.model.CardModel;
 import org.junit.Assert;
@@ -13,13 +13,11 @@ import org.mockito.Mockito;
 import org.mockito.internal.verification.VerificationModeFactory;
 import org.mockito.runners.MockitoJUnitRunner;
 
-import java.io.IOException;
-
 @RunWith(MockitoJUnitRunner.class)
 public class CardDiscoverTest extends CardDiscover {
 
     @Mock
-    private MauxArConnector connector;
+    private ArduinoJavaSerialRpc connector;
 
     @Test
     public void isLegalBaudRateTest() {
@@ -33,7 +31,7 @@ public class CardDiscoverTest extends CardDiscover {
     }
 
     @Test
-    public void findCardOk() throws MauxArConnectorActionFailsException, MauxArConnectorInitializationError {
+    public void findCardOk() throws ArduinoRpcActionFailsException, ArduinoRpcInitializationError {
         Mockito.when(connector.getBaudRate()).thenReturn(38400, 38400);
         Mockito.when(connector.getCardName()).thenReturn("FakeCard");
         Mockito.when(connector.getPortName()).thenReturn("COM555");
@@ -55,7 +53,7 @@ public class CardDiscoverTest extends CardDiscover {
     }
 
     @Test
-    public void findCardIllegalBaudRate() throws IOException, MauxArConnectorActionFailsException {
+    public void findCardIllegalBaudRate() throws ArduinoRpcActionFailsException {
         Mockito.when(connector.getBaudRate()).thenReturn(12);
         Mockito.when(connector.getCardName()).thenReturn("FakeCard2");
         Mockito.when(connector.getPortName()).thenReturn("COM34");
@@ -70,11 +68,11 @@ public class CardDiscoverTest extends CardDiscover {
     }
 
     @Test
-    public void findCardConnectFails() throws IOException, MauxArConnectorActionFailsException, MauxArConnectorInitializationError {
+    public void findCardConnectFails() throws ArduinoRpcActionFailsException, ArduinoRpcInitializationError {
         Mockito.when(connector.getBaudRate()).thenReturn(12);
         Mockito.when(connector.getCardName()).thenReturn("FakeCard2");
         Mockito.when(connector.getPortName()).thenReturn("COM34");
-        Mockito.doThrow(new MauxArConnectorInitializationError("TestException")).when(connector).connect();
+        Mockito.doThrow(new ArduinoRpcInitializationError("TestException")).when(connector).connect();
 
         CardModel result = identifyCard(connector);
 
@@ -86,10 +84,10 @@ public class CardDiscoverTest extends CardDiscover {
     }
 
     @Test
-    public void findCardGetCardNameFails() throws IOException, MauxArConnectorActionFailsException, MauxArConnectorInitializationError {
+    public void findCardGetCardNameFails() throws ArduinoRpcActionFailsException, ArduinoRpcInitializationError {
         Mockito.when(connector.getBaudRate()).thenReturn(12);
         Mockito.when(connector.getPortName()).thenReturn("COM34");
-        Mockito.doThrow(new MauxArConnectorActionFailsException("TestException")).when(connector).getCardName();
+        Mockito.doThrow(new ArduinoRpcActionFailsException("TestException")).when(connector).getCardName();
 
         CardModel result = identifyCard(connector);
 
