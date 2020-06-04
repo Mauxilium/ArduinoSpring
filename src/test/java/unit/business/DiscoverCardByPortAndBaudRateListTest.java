@@ -29,7 +29,7 @@ public class DiscoverCardByPortAndBaudRateListTest {
         testValues.setPort("COM2");
         testValues.setConnector(mockedConnector);
 
-        Mockito.when(mockDiscover.identifyCard(mockedConnector)).thenReturn(testValues);
+        Mockito.when(mockDiscover.identifyCard(Mockito.any(ArduinoJavaSerialRpc.class))).thenReturn(testValues);
         CardModel result = DiscoverCardByPortAndBaudRateList.find("COM2", new String[] {"28800", "1200"}, mockDiscover);
 
         Assert.assertEquals("COM2", result.getPort());
