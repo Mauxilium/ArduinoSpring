@@ -1,8 +1,8 @@
 package unit.business;
 
 import it.mauxilium.arduinojavaserialrpc.ArduinoJavaSerialRpc;
-import it.mauxilium.arduinojavaserialrpc.exception.ArduinoRpcActionFailsException;
 import it.mauxilium.arduinojavaserialrpc.exception.ArduinoRpcInitializationError;
+import it.mauxilium.arduinojavaserialrpc.exception.ArduinoRpcJavaFailsException;
 import it.mauxilium.springarduino.business.CardDiscover;
 import it.mauxilium.springarduino.model.CardModel;
 import org.junit.Assert;
@@ -31,7 +31,7 @@ public class CardDiscoverTest extends CardDiscover {
     }
 
     @Test
-    public void findCardOk() throws ArduinoRpcActionFailsException, ArduinoRpcInitializationError {
+    public void findCardOk() throws ArduinoRpcInitializationError, ArduinoRpcJavaFailsException {
         Mockito.when(connector.getBaudRate()).thenReturn(38400, 38400);
         Mockito.when(connector.getCardName()).thenReturn("FakeCard");
         Mockito.when(connector.getPortName()).thenReturn("COM555");
@@ -53,14 +53,14 @@ public class CardDiscoverTest extends CardDiscover {
     }
 
     @Test
-    public void findCardIllegalBaudRate() throws ArduinoRpcActionFailsException {
+    public void findCardIllegalBaudRate() throws ArduinoRpcJavaFailsException {
         Mockito.when(connector.getBaudRate()).thenReturn(12);
         Mockito.when(connector.getCardName()).thenReturn("FakeCard2");
         Mockito.when(connector.getPortName()).thenReturn("COM34");
 
         CardModel result = identifyCard(connector);
 
-        Assert.assertEquals(null, result);
+        Assert.assertNull(result);
 
         Mockito.verify(connector, VerificationModeFactory.atMost(1)).getBaudRate();
         Mockito.verifyNoMoreInteractions(connector);
@@ -68,7 +68,7 @@ public class CardDiscoverTest extends CardDiscover {
     }
 
     @Test
-    public void findCardConnectFails() throws ArduinoRpcActionFailsException, ArduinoRpcInitializationError {
+    public void findCardConnectFails() throws ArduinoRpcInitializationError, ArduinoRpcJavaFailsException {
         Mockito.when(connector.getBaudRate()).thenReturn(12);
         Mockito.when(connector.getCardName()).thenReturn("FakeCard2");
         Mockito.when(connector.getPortName()).thenReturn("COM34");
@@ -76,7 +76,7 @@ public class CardDiscoverTest extends CardDiscover {
 
         CardModel result = identifyCard(connector);
 
-        Assert.assertEquals(null, result);
+        Assert.assertNull(result);
 
         Mockito.verify(connector, VerificationModeFactory.atMost(1)).getBaudRate();
         Mockito.verifyNoMoreInteractions(connector);
@@ -84,14 +84,14 @@ public class CardDiscoverTest extends CardDiscover {
     }
 
     @Test
-    public void findCardGetCardNameFails() throws ArduinoRpcActionFailsException, ArduinoRpcInitializationError {
+    public void findCardGetCardNameFails() throws ArduinoRpcInitializationError, ArduinoRpcJavaFailsException {
         Mockito.when(connector.getBaudRate()).thenReturn(12);
         Mockito.when(connector.getPortName()).thenReturn("COM34");
-        Mockito.doThrow(new ArduinoRpcActionFailsException("TestException")).when(connector).getCardName();
+        Mockito.doThrow(new ArduinoRpcJavaFailsException("TestException")).when(connector).getCardName();
 
         CardModel result = identifyCard(connector);
 
-        Assert.assertEquals(null, result);
+        Assert.assertNull(result);
 
         Mockito.verify(connector, VerificationModeFactory.atMost(1)).getBaudRate();
         Mockito.verify(connector, VerificationModeFactory.atMost(1)).connect();

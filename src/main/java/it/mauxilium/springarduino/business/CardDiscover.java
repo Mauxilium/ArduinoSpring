@@ -1,8 +1,8 @@
 package it.mauxilium.springarduino.business;
 
 import it.mauxilium.arduinojavaserialrpc.ArduinoJavaSerialRpc;
-import it.mauxilium.arduinojavaserialrpc.exception.ArduinoRpcActionFailsException;
 import it.mauxilium.arduinojavaserialrpc.exception.ArduinoRpcInitializationError;
+import it.mauxilium.arduinojavaserialrpc.exception.ArduinoRpcJavaFailsException;
 import it.mauxilium.springarduino.model.CardModel;
 
 public class CardDiscover {
@@ -42,7 +42,7 @@ public class CardDiscover {
             final CardModel successfully = new CardModel();
             try {
                 successfully.setCardName(connector.getCardName());
-            } catch (ArduinoRpcActionFailsException e) {
+            } catch (ArduinoRpcJavaFailsException e) {
                 System.out.println("Failed match searching Arduino card using baud: " + connector.getBaudRate());
                 return null;
             }
