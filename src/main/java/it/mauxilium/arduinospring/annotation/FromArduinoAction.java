@@ -1,4 +1,4 @@
-package it.mauxilium.springarduino.annotation;
+package it.mauxilium.arduinospring.annotation;
 
 import org.springframework.stereotype.Controller;
 
@@ -8,5 +8,5 @@ import java.lang.annotation.*;
 @Retention(RetentionPolicy.CLASS)
 @Documented
 @Controller
-public @interface ToArduinoAction {
+public @interface FromArduinoAction {
 }

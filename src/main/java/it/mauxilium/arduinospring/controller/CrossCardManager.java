@@ -1,8 +1,8 @@
-package it.mauxilium.springarduino.controller;
+package it.mauxilium.arduinospring.controller;
 
 import it.mauxilium.arduinojavaserialrpc.ArduinoJavaSerialRpc;
-import it.mauxilium.springarduino.business.*;
-import it.mauxilium.springarduino.model.CardModel;
+import it.mauxilium.arduinospring.business.*;
+import it.mauxilium.arduinospring.model.CardModel;
 
 import java.util.HashMap;
 

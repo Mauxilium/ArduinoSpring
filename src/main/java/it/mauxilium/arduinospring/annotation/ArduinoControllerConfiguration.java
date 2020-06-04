@@ -1,6 +1,6 @@
-package it.mauxilium.springarduino.annotation;
+package it.mauxilium.arduinospring.annotation;
 
-import it.mauxilium.springarduino.processor.InternalArduinoAnnotationProcessor;
+import it.mauxilium.arduinospring.processor.InternalArduinoAnnotationProcessor;
 import org.springframework.beans.factory.config.BeanDefinition;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

@@ -97,14 +97,14 @@
                 <artifactId>maven-javadoc-plugin</artifactId>
                 <version>3.2.0</version>
                 <configuration>
-                    <excludePackageNames>it.mauxilium.springarduino.business</excludePackageNames>
-                    <excludePackageNames>it.mauxilium.springarduino.controller</excludePackageNames>
-                    <excludePackageNames>it.mauxilium.springarduino.model</excludePackageNames>
-                    <excludePackageNames>it.mauxilium.springarduino.processor</excludePackageNames>
+                    <excludePackageNames>it.mauxilium.arduinospring.business</excludePackageNames>
+                    <excludePackageNames>it.mauxilium.arduinospring.controller</excludePackageNames>
+                    <excludePackageNames>it.mauxilium.arduinospring.model</excludePackageNames>
+                    <excludePackageNames>it.mauxilium.arduinospring.processor</excludePackageNames>
                     <groups>
                         <group>
                             <title>Core</title>
-                            <packages>it.mauxilium.springarduino</packages>
+                            <packages>it.mauxilium.arduinospring</packages>
                         </group>
                     </groups>
                 </configuration>

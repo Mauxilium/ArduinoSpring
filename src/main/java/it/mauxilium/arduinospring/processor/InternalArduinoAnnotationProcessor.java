@@ -1,7 +1,7 @@
-package it.mauxilium.springarduino.processor;
+package it.mauxilium.arduinospring.processor;
 
-import it.mauxilium.springarduino.annotation.ArduinoController;
-import it.mauxilium.springarduino.controller.CrossCardManager;
+import it.mauxilium.arduinospring.annotation.ArduinoController;
+import it.mauxilium.arduinospring.controller.CrossCardManager;
 import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.BeanFactory;
 import org.springframework.beans.factory.DisposableBean;
@@ -18,7 +18,7 @@ public class InternalArduinoAnnotationProcessor implements BeanPostProcessor, Be
 
     @Override
     public Object postProcessAfterInitialization(Object o, String s) throws BeansException {
-        ArduinoController[] ac = o.getClass().getAnnotationsByType(it.mauxilium.springarduino.annotation.ArduinoController.class);
+        ArduinoController[] ac = o.getClass().getAnnotationsByType(it.mauxilium.arduinospring.annotation.ArduinoController.class);
         if (ac.length > 0) {
             Arrays.stream(ac).forEach(c -> CrossCardManager.getInstance().addConnectedCard(
                     c.cardName(), c.port(), c.baudRate(), c.baudRates()));

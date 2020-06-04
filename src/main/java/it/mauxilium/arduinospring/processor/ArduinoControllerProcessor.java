@@ -1,7 +1,6 @@
-package it.mauxilium.springarduino.processor;
+package it.mauxilium.arduinospring.processor;
 
 import org.springframework.context.annotation.Configuration;
-import org.springframework.stereotype.Controller;
 
 import javax.annotation.processing.AbstractProcessor;
 import javax.annotation.processing.RoundEnvironment;

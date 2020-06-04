@@ -1,9 +1,9 @@
 package unit.business;
 
 import it.mauxilium.arduinojavaserialrpc.ArduinoJavaSerialRpc;
-import it.mauxilium.springarduino.business.CardDiscover;
-import it.mauxilium.springarduino.business.DiscoverCardByPortAndBaudRateList;
-import it.mauxilium.springarduino.model.CardModel;
+import it.mauxilium.arduinospring.business.CardDiscover;
+import it.mauxilium.arduinospring.business.DiscoverCardByPortAndBaudRateList;
+import it.mauxilium.arduinospring.model.CardModel;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;

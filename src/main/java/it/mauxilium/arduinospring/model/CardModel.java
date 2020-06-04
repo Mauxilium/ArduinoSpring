@@ -1,4 +1,4 @@
-package it.mauxilium.springarduino.model;
+package it.mauxilium.arduinospring.model;
 
 import it.mauxilium.arduinojavaserialrpc.ArduinoJavaSerialRpc;
 

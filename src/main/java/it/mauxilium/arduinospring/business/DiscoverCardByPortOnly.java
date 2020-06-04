@@ -1,6 +1,6 @@
-package it.mauxilium.springarduino.business;
+package it.mauxilium.arduinospring.business;
 
-import it.mauxilium.springarduino.model.CardModel;
+import it.mauxilium.arduinospring.model.CardModel;
 
 public class DiscoverCardByPortOnly {
     public static CardModel find(final String port) {

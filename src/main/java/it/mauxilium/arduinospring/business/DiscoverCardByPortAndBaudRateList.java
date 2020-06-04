@@ -1,7 +1,7 @@
-package it.mauxilium.springarduino.business;
+package it.mauxilium.arduinospring.business;
 
 import it.mauxilium.arduinojavaserialrpc.ArduinoJavaSerialRpc;
-import it.mauxilium.springarduino.model.CardModel;
+import it.mauxilium.arduinospring.model.CardModel;
 
 import java.util.Arrays;
 

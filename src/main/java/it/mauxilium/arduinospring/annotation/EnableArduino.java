@@ -1,4 +1,4 @@
-package it.mauxilium.springarduino.annotation;
+package it.mauxilium.arduinospring.annotation;
 
 import org.springframework.context.annotation.Import;
 
